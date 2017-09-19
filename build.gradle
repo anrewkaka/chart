@@ -14,15 +14,22 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-compileJava.options.encoding = 'UTF-8'
-compileTestJava.options.encoding = 'UTF-8'
-
 group = 'xyz.lannt'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+}
+
+javadoc {
+		options.encoding = "$source_encoding"
+		options.docEncoding = "$source_encoding"
+		options.charSet = "$source_encoding"
+}
+
+test {
+		systemProperty "file.encoding", "$source_encoding"
 }
 
 

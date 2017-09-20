@@ -1,7 +1,4 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.7.RELEASE'
-	}
 	repositories {
 		mavenCentral()
 	}
@@ -15,8 +12,18 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 group = 'xyz.lannt'
-version = '0.0.1-SNAPSHOT'
+version = "$version_application"
 sourceCompatibility = 1.8
+
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
+mainClassName = "jp.honto.NotificationApplication"
+
+jar {
+	baseName = "$project_name"
+	version = "$version"
+}
 
 repositories {
 	mavenCentral()
@@ -36,6 +43,7 @@ test {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

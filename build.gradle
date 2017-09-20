@@ -1,10 +1,10 @@
 buildscript {
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
 }
 
 apply plugin: 'java'
@@ -18,50 +18,48 @@ sourceCompatibility = 1.8
 processResources.destinationDir = compileJava.destinationDir
 compileJava.dependsOn processResources
 
-mainClassName = "jp.honto.NotificationApplication"
-
 jar {
-	baseName = "$project_name"
-	version = "$version"
+  baseName = "$project_name"
+  version = "$version"
 }
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
 
 javadoc {
-		options.encoding = "$source_encoding"
-		options.docEncoding = "$source_encoding"
-		options.charSet = "$source_encoding"
+    options.encoding = "$source_encoding"
+    options.docEncoding = "$source_encoding"
+    options.charSet = "$source_encoding"
 }
 
 test {
-		systemProperty "file.encoding", "$source_encoding"
+    systemProperty "file.encoding", "$source_encoding"
 }
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-redis')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+  compile('org.springframework.boot:spring-boot-starter-data-redis')
+  compile('org.springframework.boot:spring-boot-starter-web')
+  compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 sourceSets {
-	main {
-		java {
-			srcDirs = ['src/main/java']
-		}
-		resources {
-			srcDirs = ['src/main/resources']
-		}
-	}
-	test {
-		java {
-			srcDirs = ['src/test/java']
-		}
-		resources {
-			srcDirs = ['src/test/resources']
-		}
-	}
+  main {
+    java {
+      srcDirs = ['src/main/java']
+    }
+    resources {
+      srcDirs = ['src/main/resources']
+    }
+  }
+  test {
+    java {
+      srcDirs = ['src/test/java']
+    }
+    resources {
+      srcDirs = ['src/test/resources']
+    }
+  }
 }

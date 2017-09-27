@@ -37,11 +37,6 @@ test {
     systemProperty "file.encoding", "$source_encoding"
 }
 
-task execute(type:JavaExec) {
-  main = mainClass
-  classpath = sourceSets.main.runtimeClasspath
-}
-
 dependencies {
   compile('org.springframework.boot:spring-boot-starter-data-redis')
   compile('org.springframework.boot:spring-boot-starter-web')
@@ -66,4 +61,9 @@ sourceSets {
       srcDirs = ['src/test/resources']
     }
   }
+}
+
+task execute(type:JavaExec) {
+  main = ChartApplication
+  classpath = sourceSets.main.runtimeClasspath
 }

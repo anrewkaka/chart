@@ -37,6 +37,10 @@ test {
     systemProperty "file.encoding", "$source_encoding"
 }
 
+task execute(type:JavaExec) {
+  main = mainClass
+  classpath = sourceSets.main.runtimeClasspath
+}
 
 dependencies {
   compile('org.springframework.boot:spring-boot-starter-data-redis')

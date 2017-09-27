@@ -4,45 +4,47 @@ import java.time.LocalDateTime;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.Table;
 
 @Entity
-public class Exchange {
+@Table(name = "EXCHANGE")
+public class ExchangeEntity {
 
   @Column(name = "ID")
-  public int id;
+  public Integer id;
 
   @Column(name = "STCK_ID")
-  public int stockId;
+  public Integer stockId;
 
   @Column(name = "PRD_ID")
-  public int productId;
+  public Integer productId;
 
   @Column(name = "DTTM")
   public LocalDateTime datetime;
 
   @Column(name = "BUY_PRC")
-  public float buyPrice;
+  public Float buyPrice;
 
   @Column(name = "QTY")
-  public float quantity;
+  public Float quantity;
 
   @Column(name = "TG1")
-  public float target1;
+  public Float target1;
 
   @Column(name = "TG2")
-  public float target2;
+  public Float target2;
 
   @Column(name = "TG3")
-  public float target3;
+  public Float target3;
 
   @Column(name = "LOW_PRC_SELL")
-  public float lowPriceSell;
+  public Float lowPriceSell;
 
   @Column(name = "SELL_PRC")
-  public float sellPrice;
+  public Float sellPrice;
 
   @Column(name = "FEE")
-  public float fee;
+  public Float fee;
 
   @Column(name = "STS")
   public String status;

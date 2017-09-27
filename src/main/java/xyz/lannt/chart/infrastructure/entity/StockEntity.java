@@ -2,25 +2,27 @@ package xyz.lannt.chart.infrastructure.entity;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.Table;
 
 @Entity
-public class Stock {
+@Table(name = "STOCK")
+public class StockEntity {
 
   @Column(name = "ID")
-  private String id;
+  public Integer id;
 
   @Column(name = "NM")
-  private String name;
+  public String name;
 
   @Column(name = "HST")
-  private String host;
+  public String host;
 
   @Column(name = "API_KEY")
-  private String apiKey;
+  public String apiKey;
 
   @Column(name = "SCR_KEY")
-  private String secretKey;
+  public String secretKey;
 
   @Column(name = "LGC_DEL_FLG")
-  private String logicDeleteFlag;
+  public String logicDeleteFlag;
 }

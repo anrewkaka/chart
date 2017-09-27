@@ -2,12 +2,14 @@ package xyz.lannt.chart.infrastructure.entity;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.Table;
 
 @Entity
-public class Product {
+@Table(name = "PRODUCT")
+public class ProductEntity {
 
   @Column(name = "ID")
-  public String id;
+  public Integer id;
 
   @Column(name = "NM")
   public String name;

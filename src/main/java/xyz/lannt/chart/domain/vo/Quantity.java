@@ -8,11 +8,11 @@ public class Quantity extends BigDecimal {
 
   private static final long serialVersionUID = -2788365334805173203L;
 
-  public Quantity(Float val) {
+  public Quantity(Double val) {
     super(ObjectUtils.isEmpty(val) ? 0 : val);
   }
 
-  public static Quantity create(Float value) {
+  public static Quantity create(Double value) {
     return new Quantity(value);
   }
 }

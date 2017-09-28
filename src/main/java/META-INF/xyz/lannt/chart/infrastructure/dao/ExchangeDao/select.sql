@@ -1,9 +1,11 @@
 SELECT
     EX.ID,
+    STCK.ID STCK_ID,
     STCK.NM,
     STCK.HST,
     STCK.API_KEY,
     STCK.SECRET_KEY,
+    PRD.ID PRD_ID,
     PRD.NM,
     EX.DTTM,
     EX.BUY_PRC,
@@ -25,5 +27,6 @@ SELECT
       ON EX.PRD_ID = PRD.ID
       AND PRD.LGC_DEL_FLG = '0'
   WHERE
-    EX.PRD_ID = '1'/*productId*/
+    STCK.ID = '1'/*stockId*/
+    AND EX.PRD_ID = '1'/*productId*/
     AND EX.LGC_DEL_FLG = '0'

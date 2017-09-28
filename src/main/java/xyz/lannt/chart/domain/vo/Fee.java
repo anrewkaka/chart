@@ -8,11 +8,11 @@ public class Fee extends BigDecimal {
 
   private static final long serialVersionUID = -4423678731206587593L;
 
-  public Fee(Float val) {
+  public Fee(Double val) {
     super(ObjectUtils.isEmpty(val) ? 0 : val);
   }
 
-  public static Fee create(Float value) {
+  public static Fee create(Double value) {
     return new Fee(value);
   }
 }

@@ -1,6 +1,7 @@
 package xyz.lannt.chart.infrastructure.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
@@ -14,5 +15,5 @@ public interface ExchangeDao {
   public List<StockExchange> selectAll();
 
   @Select
-  public StockExchange select(String productId);
+  public Optional<StockExchange> select(String stockId, String productId);
 }

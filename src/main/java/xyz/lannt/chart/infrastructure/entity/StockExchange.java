@@ -11,6 +11,9 @@ public class StockExchange {
   @Column(name = "ID")
   public Integer id;
 
+  @Column(name = "STCK_ID")
+  public Integer stockId;
+
   @Column(name = "STCK_NM")
   public String stock;
 
@@ -23,6 +26,9 @@ public class StockExchange {
   @Column(name = "SCR_KEY")
   public String secretKey;
 
+  @Column(name = "PRD_ID")
+  public Integer productId;
+
   @Column(name = "PRD_NM")
   public String productName;
 
@@ -30,28 +36,28 @@ public class StockExchange {
   public LocalDateTime datetime;
 
   @Column(name = "BUY_PRC")
-  public Float buyPrice;
+  public Double buyPrice;
 
   @Column(name = "QTY")
-  public Float quantity;
+  public Double quantity;
 
   @Column(name = "TG1")
-  public Float target1;
+  public Double target1;
 
   @Column(name = "TG2")
-  public Float target2;
+  public Double target2;
 
   @Column(name = "TG3")
-  public Float target3;
+  public Double target3;
 
   @Column(name = "LOW_PRC_SELL")
-  public Float lowPriceSell;
+  public Double lowPriceSell;
 
   @Column(name = "SELL_PRC")
-  public Float sellPrice;
+  public Double sellPrice;
 
   @Column(name = "FEE")
-  public Float fee;
+  public Double fee;
 
   @Column(name = "STS")
   public String status;

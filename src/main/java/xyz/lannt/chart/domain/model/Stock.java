@@ -7,6 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class Stock {
 
+  private int id;
+
   private String name;
 
   private String host;

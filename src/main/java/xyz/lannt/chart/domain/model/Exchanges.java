@@ -1,19 +1,31 @@
 package xyz.lannt.chart.domain.model;
 
+import static java.util.stream.Collectors.toList;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
-import xyz.lannt.chart.infrastructure.entity.StockExchange;
+import xyz.lannt.chart.presentation.dto.ExchangeDto;
 
 @AllArgsConstructor
 public class Exchanges {
 
   private List<Exchange> values;
 
-  public static Exchanges fromEntities(List<StockExchange> entities) {
-    return entities.stream()
-        .map(Exchange::fromEntity)
-        .collect(Collectors.collectingAndThen(Collectors.toList(), Exchanges::new));
+  public Exchanges() {
+    values = new ArrayList<Exchange>();
+  }
+
+
+  public List<ExchangeDto> toDtoes() {
+    return values.stream()
+        .map(Exchange::toDto)
+        .collect(toList());
+  }
+
+  public Exchanges add(Exchange exchange) {
+    values.add(exchange);
+    return this;
   }
 }

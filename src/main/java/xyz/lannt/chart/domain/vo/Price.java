@@ -8,11 +8,11 @@ public class Price extends BigDecimal {
 
   private static final long serialVersionUID = 2656902385439860755L;
 
-  public Price(Float val) {
+  public Price(Double val) {
     super(ObjectUtils.isEmpty(val) ? 0 : val);
   }
 
-  public static Price create(Float value) {
+  public static Price create(Double value) {
     return new Price(value);
   }
 }

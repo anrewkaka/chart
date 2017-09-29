@@ -1,23 +1,28 @@
 package xyz.lannt.chart.application.client;
 
-import org.springframework.http.HttpMethod;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import com.google.gson.FieldNamingPolicy;
+import org.springframework.http.HttpMethod;
 
 import xyz.lannt.chart.application.client.request.MarketRequest;
 import xyz.lannt.chart.application.client.response.MarketResponse;
 import xyz.lannt.chart.application.client.response.bittrex.BittrexTickerResponse;
 
+import com.google.gson.FieldNamingPolicy;
+
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BittrexMarketClient implements MarketClient {
+
+  @Getter
+  private MarketClientSetting setting;
 
   @Override
   public FieldNamingPolicy getGsonFieldNamingPolicy() {
     return FieldNamingPolicy.UPPER_CAMEL_CASE;
-  }
-
-  @Override
-  public String getBaseUrl() {
-    return "https://bittrex.com/api/v2.0/";
   }
 
   @Override
@@ -63,7 +68,6 @@ public class BittrexMarketClient implements MarketClient {
 
   @Override
   public MarketResponse getOrder(MarketRequest request) {
-    // TODO Auto-generated method stub
     return null;
   }
 
@@ -75,14 +79,12 @@ public class BittrexMarketClient implements MarketClient {
 
   @Override
   public MarketResponse getOpenOrders(MarketRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+    return request("account/getbalances", HttpMethod.GET, request, BittrexTickerResponse.class);
   }
 
   @Override
-  public MarketResponse getBalance(MarketRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+  public BittrexTickerResponse getBalance(MarketRequest request) {
+    return request("account/getbalances", HttpMethod.GET, request, BittrexTickerResponse.class);
   }
 
   @Override

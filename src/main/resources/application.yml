@@ -12,3 +12,8 @@ spring:
 doma:
   dialect: MYSQL
   naming: SNAKE_LOWER_CASE
+
+# MARKET
+bittrex:
+  baseUrl: https://bittrex.com/api/v2.0/
+  apiKey: 24dc0de9011e4bcf8e823a5ac72c2b32

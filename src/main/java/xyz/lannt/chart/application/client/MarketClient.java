@@ -3,19 +3,20 @@ package xyz.lannt.chart.application.client;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
-
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import xyz.lannt.chart.application.client.request.MarketRequest;
 import xyz.lannt.chart.application.client.response.MarketResponse;
 import xyz.lannt.chart.application.exception.ChartException;
 
-interface MarketClient {
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-  String getBaseUrl();
+public interface MarketClient {
+
+  MarketClientSetting getSetting();
 
   FieldNamingPolicy getGsonFieldNamingPolicy();
 
@@ -28,11 +29,13 @@ interface MarketClient {
     messageConverter.setGson(gson);
     restTemplate.getMessageConverters().add(messageConverter);
 
-    String url = getBaseUrl() + uri;
+    String url = getSetting().getBaseUrl() + uri;
 
     if (HttpMethod.GET.equals(method)) {
       try {
-        url += "?" + request.toQueryParam();
+        if (!ObjectUtils.isEmpty(request)) {
+          url += "?" + request.toQueryParam();
+        }
       } catch (IllegalAccessException e) {
         throw new ChartException(e);
       }

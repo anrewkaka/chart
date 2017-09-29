@@ -15,15 +15,15 @@
       <form action="/trade" method="post">
         <div class="from-group">
           <label for="product">PRD</label>
-          <input type="text" class="form-control" id="product" name="product" value="${exchange}" />
+          <input type="text" class="form-control" id="product" name="product" th:value="${exchange.product}" />
         </div>
         <div class="from-group">
           <label for="quantity">QTY</label>
-          <input type="text" class="form-control" id="quantity" name="quantity" value="${exchange.quantity}" />
+          <input type="text" class="form-control" id="quantity" name="quantity" th:value="${exchange.quantity}" />
         </div>
         <div class="from-group">
-          <label for="price">PRD</label>
-          <input type="text" class="form-control" id="price" name="price" value="${exchange.price}"/>
+          <label for="price">BP</label>
+          <input type="text" class="form-control" id="price" name="price" th:value="${exchange.buyPrice}"/>
         </div>
       </form>
     </div>

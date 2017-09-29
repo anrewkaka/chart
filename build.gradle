@@ -46,6 +46,7 @@ dependencies {
     'mysql:mysql-connector-java:6.0.6',
     'org.projectlombok:lombok:1.16.18',
     'mysql:mysql-connector-java:5.1.38',
+    'com.google.code.gson:gson:2.7',
   )
   testCompile('org.springframework.boot:spring-boot-starter-test')
 }

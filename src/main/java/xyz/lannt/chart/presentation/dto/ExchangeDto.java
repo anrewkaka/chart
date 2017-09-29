@@ -19,6 +19,8 @@ public class ExchangeDto {
 
   public float buyPrice;
 
+  public float currentPrice;
+
   public float quantity;
 
   public float target1;

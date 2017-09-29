@@ -38,8 +38,11 @@ function fillData(data) {
     row.append($("<td></td>").text(exchange.target2));
     row.append($("<td></td>").text(exchange.target3));
     row.append($("<td></td>").text(exchange.target4));
-    row.append($("<td></td>").text("crr"));
-    row.append($("<td></td>").text("crr%"));
+    row.append($("<td></td>").text(exchange.currentPrice));
+
+    var currentPercentage = exchange.currentPrice / exchange.buyPrice;
+    row.append($("<td></td>").text(isNaN(currentPercentage) ? '0%' : currentPercentage + '%'));
+
     table.append(row);
   });
 }

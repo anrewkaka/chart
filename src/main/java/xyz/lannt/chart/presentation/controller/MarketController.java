@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/market")
 public class MarketController {
 
-  @RequestMapping(value = "market", method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET)
   public String get() {
     return "html/market";
   }

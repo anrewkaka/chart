@@ -1,3 +1,7 @@
+# SERVER
+server:
+  port: 8080
+
 # DB
 spring:
   datasource:
@@ -14,6 +18,5 @@ doma:
   naming: SNAKE_LOWER_CASE
 
 # MARKET
-bittrex:
-  baseUrl: https://bittrex.com/api/v2.0/
-  apiKey: 24dc0de9011e4bcf8e823a5ac72c2b32
+bittrex-client:
+  url: http://localhost:8081

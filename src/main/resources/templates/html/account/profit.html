@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>market</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery-number/jquery.number.min.js"></script>
+    <script type="text/javascript" src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script type="text/javascript" src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script type="text/javascript" src="/js/account/app.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <table class="table" id="profit">
+        <thead>
+          <tr>
+            <th>PRD</th>
+            <th>AMT</th>
+            <th>BP</th>
+            <th>CR</th>
+            <th>PR</th>
+            <th>PR(%)</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="model-title">Modal Header</h4>
+            </div>
+            <div class="modal-body" id="model-body">
+              <p>This is a small modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btn_sell">Sell</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

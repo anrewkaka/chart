@@ -27,6 +27,6 @@ SELECT
       ON EX.PRD_ID = PRD.ID
       AND PRD.LGC_DEL_FLG = '0'
   WHERE
-    STCK.ID = '1'/*stockId*/
-    AND EX.PRD_ID = '1'/*productId*/
+    STCK.ID = /*stockId*/'1'
+    AND EX.PRD_ID = /*productId*/'1'
     AND EX.LGC_DEL_FLG = '0'

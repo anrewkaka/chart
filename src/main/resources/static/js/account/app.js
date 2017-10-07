@@ -26,7 +26,7 @@ function showAccount(message) {
         row.append($("<td></td>").addClass("profit_name").text(data.name));
         row.append($("<td></td>").addClass("hidden-xs").text(data.amount));
         row.append($("<td></td>").addClass("hidden-xs").text(data.buy_price));
-        row.append($("<td></td>").addClass("hidden-xs").text(data.current_price));
+        row.append($("<td></td>").text(data.current_price));
         row.append($("<td></td>").text(data.profit));
         row.append($("<td></td>").addClass("profit_percentage").text(
             $.number(data.profit_in_percentage, 2) + " %"));

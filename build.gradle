@@ -18,10 +18,6 @@ sourceCompatibility = 1.8
 processResources.destinationDir = compileJava.destinationDir
 compileJava.dependsOn processResources
 
-def aptGeneratePath = 'build/apt_generated'
-compileJava.options.compilerArgs = ['-s', aptGeneratePath]
-new File(aptGeneratePath).mkdirs()
-
 jar {
   baseName = "$project_name"
   version = "$version"
@@ -29,6 +25,7 @@ jar {
 
 repositories {
   mavenCentral()
+  maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
 }
 
 javadoc {
@@ -46,9 +43,10 @@ dependencies {
     'org.springframework.boot:spring-boot-starter-data-redis',
     'org.springframework.boot:spring-boot-starter-websocket',
     'org.springframework.boot:spring-boot-starter-thymeleaf',
-    'org.seasar.doma.boot:doma-spring-boot-starter:1.1.1',
+
     'mysql:mysql-connector-java:6.0.6',
     'mysql:mysql-connector-java:5.1.38',
+    'org.seasar.doma:doma:2.17.0',
 
     'org.projectlombok:lombok:1.16.18',
     'com.google.code.gson:gson:2.7',

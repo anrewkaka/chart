@@ -24,12 +24,12 @@ function showAccount(message) {
         row.addClass(getCssClass(data.profit_in_percentage));
         row.addClass("profit_row");
         row.append($("<td></td>").addClass("profit_name").text(data.name));
-        row.append($("<td></td>").text($.number(data.amount, 8)));
-        row.append($("<td></td>").text($.number(data.buy_price, 8)));
-        row.append($("<td></td>").text($.number(data.current_price, 8)));
-        row.append($("<td></td>").text($.number(data.profit, 8)));
+        row.append($("<td></td>").addClass("hidden-xs").text(data.amount));
+        row.append($("<td></td>").addClass("hidden-xs").text(data.buy_price));
+        row.append($("<td></td>").addClass("hidden-xs").text(data.current_price));
+        row.append($("<td></td>").text(data.profit));
         row.append($("<td></td>").addClass("profit_percentage").text(
-            $.number(data.profit_in_percentage, 2)));
+            $.number(data.profit_in_percentage, 2) + " %"));
         tbody.append(row);
       });
 }

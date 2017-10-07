@@ -28,7 +28,7 @@ public class AccountController {
 
   @MessageMapping("/account_profit")
   @SendTo("/topic/account_profit")
-  public ResponseEntity<?> getTimestamp(String baseCurrency) throws Exception {
+  public ResponseEntity<?> getProfit(String baseCurrency) throws Exception {
     return ResponseEntity.ok(restTemplate.getForObject(property.getUrl() + "/account/profit/" + baseCurrency, String.class));
   }
 }

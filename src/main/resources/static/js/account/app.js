@@ -27,7 +27,7 @@ function showAccount(message) {
         row.addClass(getCssClass(data.profit_in_percentage));
         row.addClass("profit_row");
         row.append($("<td></td>").addClass("profit_name").text(data.name));
-        row.append($("<td></td>").addClass("hidden-xs").text(data.amount));
+        row.append($("<td></td>").addClass("hidden-xs quantity").text(data.amount));
         row.append($("<td></td>").addClass("hidden-xs").text(data.buy_price));
         row.append($("<td></td>").addClass("price").text(data.current_price));
         row.append($("<td></td>").text(data.profit));
@@ -73,17 +73,20 @@ function showModal(element) {
   var name = $(element).find(".profit_name").html();
   var profitInPercentage = $(element).find(".profit_percentage").html();
   var price = $(element).find(".price").html();
+  var quantity = $(element).find(".quantity").html();
   $("#myModal").find("#model-title").html(name);
   $("#myModal").find("#model-body").find(".price").text(price);
   $("#myModal").find("#model-body").find(".profit").text(profitInPercentage);
+  $("#myModal").find("#quantity").val(quantity);
 }
 
 function sell() {
   $("#myModal").modal("toggle");
   var name = $("#myModal").find("#model-title").html();
   var price = $("#myModal").find("#model-body").find(".price").text();
+  var quantity = $("#myModal").find("#model-body").find("#quantity").val();
   alertSelling(name, price);
-  stompClient.send("/app/sell", {}, JSON.stringify({ "name": name, "price": price }));
+  stompClient.send("/app/sell", {}, JSON.stringify({ "name": name, "price": price, "quantity": quantity, "base_currency": "BTC" }));
 }
 
 function alertSelling(name, price) {

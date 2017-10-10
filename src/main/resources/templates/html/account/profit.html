@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/webjars/jquery-number/jquery.number.min.js"></script>
     <script type="text/javascript" src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script type="text/javascript" src="/webjars/stomp-websocket/stomp.min.js"></script>
@@ -39,7 +40,8 @@
               <h4 class="modal-title" id="model-title">Modal Header</h4>
             </div>
             <div class="modal-body" id="model-body">
-              <p>This is a small modal.</p>
+              <label>Current price is: </label><p class="price"></p>
+              <label>Current profit is: </label><p class="profit"></p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" id="btn_sell">Sell</button>
@@ -48,6 +50,13 @@
           </div>
         </div>
       </div>
+      
+      <!-- Alert -->
+       <div class="alert alert-info alert-dismissable fade in">
+         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+         <strong>Info!</strong><p></p>
+       </div>
+
     </div>
   </body>
 </html>

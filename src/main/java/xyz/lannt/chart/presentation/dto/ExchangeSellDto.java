@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class ExchangeSellDto {
 
+  private String exchange;
+
   private String name;
 
   private String price;

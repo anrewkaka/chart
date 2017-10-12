@@ -17,5 +17,8 @@ doma:
   naming: SNAKE_LOWER_CASE
 
 # MARKET
-bittrex-client:
-  url: http://localhost:8081
+bittrex:
+  baseUrl: https://bittrex.com/api/v1.1/
+  apiKey: api_key
+  secret: secret_key
+  devMode: false

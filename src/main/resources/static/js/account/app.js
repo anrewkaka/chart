@@ -1,7 +1,7 @@
 var stompClient = null;
 
 function connect() {
-  var socket = new SockJS('/bittrex-websocket');
+  var socket = new SockJS('/chart-websocket');
   stompClient = Stomp.over(socket);
   stompClient.debug = null;
   stompClient.connect({}, function(frame) {
@@ -53,7 +53,7 @@ $(function() {
 });
 
 function send() {
-  stompClient.send("/app/account_profit", {}, "BTC");
+  stompClient.send("/app/account_profit", {}, JSON.stringify({ "exchange": $("#exchange").val(), "baseCurrency": "BTC" }));
 }
 
 function getCssClass(profitInPercentage) {
@@ -86,7 +86,7 @@ function sell() {
   var price = $("#myModal").find("#model-body").find(".price").text();
   var quantity = $("#myModal").find("#model-body").find("#quantity").val();
   alertSelling(name, price);
-  stompClient.send("/app/sell", {}, JSON.stringify({ "name": name, "price": price, "quantity": quantity, "base_currency": "BTC" }));
+  stompClient.send("/app/sell", {}, JSON.stringify({ "exchange": $("#exchange").val(), "name": name, "price": price, "quantity": quantity, "base_currency": "BTC" }));
 }
 
 function alertSelling(name, price) {

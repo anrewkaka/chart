@@ -18,7 +18,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/bittrex-websocket").withSockJS();
+        registry.addEndpoint("/chart-websocket").withSockJS();
     }
 
 }

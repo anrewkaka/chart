@@ -39,7 +39,7 @@ function showAccount(message) {
 
 $(function() {
   connect();
-  setInterval(send, 500);
+  setInterval(send, 1000);
 
   $("#profit").find("tbody").on("click", "tr", function() {
     showModal(this);

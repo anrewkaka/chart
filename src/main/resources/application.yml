@@ -19,6 +19,6 @@ doma:
 # MARKET
 bittrex:
   baseUrl: https://bittrex.com/api/v1.1/
-  apiKey: api_key
-  secret: secret_key
+  apiKey: 16dd768cc7584c73b0e54c4c7b7eca94
+  secret: f4a4b8c6498240ba8966cb11e7dab9c8
   devMode: false

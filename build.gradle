@@ -25,6 +25,8 @@ jar {
 
 repositories {
   mavenCentral()
+  mavenLocal()
+  maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
 }
 
 javadoc {
@@ -37,11 +39,29 @@ test {
     systemProperty "file.encoding", "$source_encoding"
 }
 
-
 dependencies {
-  compile('org.springframework.boot:spring-boot-starter-data-redis')
-  compile('org.springframework.boot:spring-boot-starter-web')
-  compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+  compile ('xyz.lannt:market-client-autoconfig:0.0.1-SNAPSHOT') { exclude group: 'xyz.lannt', module: 'market-client' }
+  compile(
+    'org.springframework.boot:spring-boot-starter-data-redis',
+    'org.springframework.boot:spring-boot-starter-websocket',
+    'org.springframework.boot:spring-boot-starter-thymeleaf',
+
+    'mysql:mysql-connector-java:6.0.6',
+    'mysql:mysql-connector-java:5.1.38',
+    'org.seasar.doma:doma:2.17.0',
+
+    'org.projectlombok:lombok:1.16.18',
+    'com.google.code.gson:gson:2.7',
+
+    'org.webjars:webjars-locator',
+    'org.webjars:sockjs-client:1.0.2',
+    'org.webjars:stomp-websocket:2.3.3',
+    'org.webjars:bootstrap:3.3.7',
+    'org.webjars:jquery:3.1.0',
+    'org.webjars:jquery-number:2.1.3',
+
+    'xyz.lannt:market-client:1.0.1-SNAPSHOT',
+  )
   testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
@@ -63,3 +83,4 @@ sourceSets {
     }
   }
 }
+

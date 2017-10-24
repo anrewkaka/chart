@@ -9,11 +9,13 @@ public class ExchangeSellDto {
 
   private String exchange;
 
-  private String name;
+  private String currency;
 
-  private String price;
+  private String rate;
 
   private String quantity;
 
   private String baseCurrency;
+  
+  private String market;
 }

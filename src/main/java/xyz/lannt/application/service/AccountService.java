@@ -15,7 +15,9 @@ import xyz.lannt.domain.model.MarketSummaries;
 import xyz.lannt.exception.MarketClientException;
 import xyz.lannt.infrastructure.repository.ExchangeRepository;
 import xyz.lannt.market.client.MarketClientFactory;
+import xyz.lannt.market.request.MarketRequest;
 import xyz.lannt.market.response.bittrex.BittrexBalancesResponse;
+import xyz.lannt.market.response.bittrex.BittrexSellingResponse;
 import xyz.lannt.presentation.dto.BalanceDto;
 import xyz.lannt.presentation.dto.BalanceProfitDto;
 
@@ -63,5 +65,9 @@ public class AccountService {
         .map(BalanceProfit::toDto)
         .collect(toList());
 
+  }
+
+  public BittrexSellingResponse sell(Market market, MarketRequest request) {
+    return (BittrexSellingResponse)marketClientFactory.getClient(market).sell(request);
   }
 }

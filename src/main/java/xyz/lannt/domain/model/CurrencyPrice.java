@@ -50,7 +50,7 @@ public class CurrencyPrice {
 
   public static CurrencyPrice fromDto(CurrencyPriceRegistrationDto dto) {
     CurrencyPrice price = new CurrencyPrice();
-    price.name = CryptoText.create(dto.getName());
+    price.name = CryptoText.create(dto.getCurrency());
     price.price = CryptoValue.create(dto.getPrice());
     price.datetime = CryptoTimestamp.now();
     return price;

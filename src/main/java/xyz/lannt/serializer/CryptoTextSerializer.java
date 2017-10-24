@@ -1,4 +1,4 @@
-package xyz.lannt.presentation.dto.serializer;
+package xyz.lannt.serializer;
 
 import java.lang.reflect.Type;
 

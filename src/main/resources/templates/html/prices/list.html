@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Bittrex Prices</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/webjars/jquery-number/jquery.number.min.js"></script>
+  <script type="text/javascript" src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script type="text/javascript" src="/webjars/stomp-websocket/stomp.min.js"></script>
+  <script type="text/javascript" src="/js/price/list.js"></script>
+</head>
+<body>
+  <input type="hidden" id="exchange" th:value="${exchange}" />
+  <div class="container">
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger" id="btn_delete_all">Xóa Tất Cả</button>
+      <button type="button" class="btn btn-success" id="btn_add_currency" data-toggle="modal" data-target="#myModal">Thêm</button>
+    </div>
+    <table class="table" id="price">
+      <thead>
+        <tr>
+          <th>PRD</th>
+          <th>PR</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" id="model-title">Thêm</h4>
+          </div>
+          <div class="modal-body" id="model-body">
+            <label>Exchange: </label><label id="lbl_exchange"></label><br></br>
+            <label>Currency: </label><label id="lbl_currency"></label><input id="txt_currency" /><br></br>
+            <label>Price: </label><input type="text" id="txt_price" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="btn_add_price">Thêm</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

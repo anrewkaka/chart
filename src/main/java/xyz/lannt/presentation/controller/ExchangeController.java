@@ -2,17 +2,22 @@ package xyz.lannt.presentation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import xyz.lannt.application.service.ExchangeService;
 import xyz.lannt.constant.ExchangeStatus;
 import xyz.lannt.domain.model.CurrencyPrice;
+import xyz.lannt.presentation.dto.CurrencyPriceDeleteDto;
 import xyz.lannt.presentation.dto.CurrencyPriceRegistrationDto;
 
 @Controller
@@ -21,6 +26,9 @@ public class ExchangeController {
 
   @Autowired
   private ExchangeService exchangeService;
+
+  @Autowired
+  private Gson gson;
 
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<?> get(ExchangeStatus status) {
@@ -34,25 +42,29 @@ public class ExchangeController {
     return new ModelAndView("html/exchange", model);
   }
 
-  @RequestMapping(value = "/price/{exchange}/{currency}", method = RequestMethod.GET)
-  public ResponseEntity<?> getPrice(@PathVariable String exchange, @PathVariable String currency) {
-    return ResponseEntity.ok(exchangeService.getPrice(exchange, currency));
+  @RequestMapping(value = "/price/{exchange}", method = RequestMethod.GET)
+  public String getPrices(@PathVariable String exchange, Model model) {
+    model.addAttribute("exchange", exchange);
+    return "html/prices/list";
   }
 
-  @RequestMapping(value = "/price/{exchange}/{currency}", method = RequestMethod.DELETE)
-  public ResponseEntity<?> deletePrice(@PathVariable String exchange, @PathVariable String currency) {
-    exchangeService.deletePrice(exchange, currency);
+  @MessageMapping(value = "/price-delete")
+  @SendTo("/topic/price")
+  public ResponseEntity<?> deletePrice(CurrencyPriceDeleteDto dto) {
+    exchangeService.deletePrice(dto.getExchange(), dto.getCurrency());
     return ResponseEntity.ok().build();
   }
 
-  @RequestMapping(value = "/price/{exchange}", method = RequestMethod.GET)
-  public ResponseEntity<?> getPrices(@PathVariable String exchange) {
-    return ResponseEntity.ok(exchangeService.getPrices(exchange));
+  @MessageMapping(value = "/get-list")
+  @SendTo("/topic/price")
+  public ResponseEntity<?> getPrices(String exchange) {
+    return ResponseEntity.ok(gson.toJson(exchangeService.getPrices(exchange)));
   }
 
-  @RequestMapping(value = "/price/{exchange}", method = RequestMethod.PUT)
-  public ResponseEntity<?> setPrice(@PathVariable String exchange, @RequestBody CurrencyPriceRegistrationDto price) {
-    exchangeService.setPrice(exchange, CurrencyPrice.fromDto(price));
+  @MessageMapping(value = "/price-registration")
+  @SendTo("/topic/price")
+  public ResponseEntity<?> setPrice(CurrencyPriceRegistrationDto dto) {
+    exchangeService.setPrice(dto.getExchange(), CurrencyPrice.fromDto(dto));
     return ResponseEntity.ok().build();
   }
 //

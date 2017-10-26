@@ -1,5 +1,5 @@
-# create image from open jdk
-FROM openjdk:8-jdk-alpine
+# create image from java
+FROM java:alpine
 
 # create tmp
 VOLUME /opt/chart

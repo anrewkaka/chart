@@ -1,0 +1,18 @@
+version: "3"
+services:
+  chart:
+    image: lanntxyz/chart:latest
+    ports:
+      - 80:8081
+    environment:
+      - REDIS_HOST=redis
+  redis:
+     image: redis:latest
+     volumes:
+        - redis_data:/data
+
+volumes:
+  redis_data:
+
+networks:
+  webnet:

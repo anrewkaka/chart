@@ -2,10 +2,10 @@
 FROM openjdk:8-jdk-alpine
 
 # create tmp
-VOLUME /tmp
+VOLUME /opt/chart
 
 # add jar to docker
-ADD build/libs/chart-0.0.1-SNAPSHOT.jar app.jar
+ADD build/libs/chart-0.0.1-SNAPSHOT.jar /opt/chart/app.jar
 
 # set environment variable
 ENV JAVA_OPTS=""

@@ -11,9 +11,9 @@ services:
     environment:
       - REDIS_HOST=redis
   redis:
-    image: redis:latest
-    volumes:
-      - redis_data: /data
+     image: redis:latest
+     volumes:
+        - redis_data:/data
 
 volumes:
   redis_data:

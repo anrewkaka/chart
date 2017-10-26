@@ -9,10 +9,10 @@ services:
     volumes:
       - ../build/libs:/opt/chart
     entrypoint: java -jar /opt/chart/chart-0.0.1-SNAPSHOT.jar
-  #redis:
-  #   image: redis:latest
-  #   volumes:
-  #      - redis_data:/data
+  redis:
+     image: redis:latest
+     volumes:
+        - redis_data:/data
 
 volumes:
   redis_data:

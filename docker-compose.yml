@@ -1,7 +1,7 @@
 version: "3"
 services:
   chart:
-    image: lanntxyz/chart-server-docker:latest
+    image: lanntxyz/chart:latest
     ports:
       - 80:8080
     networks:

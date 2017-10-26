@@ -10,9 +10,7 @@ ADD ./script /opt/script
 # set environment variable
 ENV JAVA_OPTS=""
 
-USER daemon
-
 # setting entrypoint
 # ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /opt/chart/app.jar
 
-CMD sudo chown -R daemon /bin/bash
+RUN chmod +x /bin/bash

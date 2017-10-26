@@ -8,7 +8,7 @@ services:
       - REDIS_HOST=redis
     volumes:
       - ../build/libs:/opt/chart
-    entrypoint: /opt/chart/chart-0.0.1-SNAPSHOT.jar
+    entrypoint: exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /opt/chart/chart-0.0.1-SNAPSHOT.jar
   #redis:
   #   image: redis:latest
   #   volumes:

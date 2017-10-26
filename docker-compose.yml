@@ -4,10 +4,6 @@ services:
     image: lanntxyz/chart:latest
     ports:
       - 80:8080
-    networks:
-      - webnet
-    volumes:
-      - ./:/opt/chart
     environment:
       - REDIS_HOST=redis
   redis:

@@ -14,3 +14,4 @@ ENV JAVA_OPTS=""
 # ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /opt/chart/app.jar
 
 RUN chmod +x /bin/bash
+RUN chmod +x /bin/script

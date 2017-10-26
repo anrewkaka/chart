@@ -10,13 +10,6 @@ services:
       - ./:/opt/chart
     environment:
       - REDIS_HOST=redis
-    command: script/start.sh
-  redis:
-    image: redis:latest
-    volumes:
-      - redis_data:/data
 
-volumes:
-  redis_data:
 networks:
   webnet:

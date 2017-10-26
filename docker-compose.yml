@@ -10,6 +10,13 @@ services:
       - ./:/opt/chart
     environment:
       - REDIS_HOST=redis
+  redis:
+    image: redis:latest
+    volumes:
+      - redis_data: /data
+
+volumes:
+  redis_data:
 
 networks:
   webnet:

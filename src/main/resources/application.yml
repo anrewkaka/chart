@@ -8,6 +8,8 @@ spring:
     url: jdbc:mysql://localhost:3306/sys?useSSL=false
     username: root
     password: Abc12345
+  redis:
+    host: redis
   thymeleaf:
     cache: false
 

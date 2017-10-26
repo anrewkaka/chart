@@ -9,13 +9,10 @@ services:
     #volumes:
     #  - ../build/libs:/opt/chart
     entrypoint: echo abc
-  redis:
-     image: redis:latest
-     volumes:
-        - redis_data:/data
+  #redis:
+  #   image: redis:latest
+  #   volumes:
+  #      - redis_data:/data
 
 volumes:
   redis_data:
-
-networks:
-  webnet:

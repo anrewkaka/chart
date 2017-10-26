@@ -6,9 +6,6 @@ services:
       - 80:8080
     networks:
       - webnet
-    deploy:
-      restart_policy:
-        condition: on-failure
     volumes:
       - ./:/opt/chart
     environment:

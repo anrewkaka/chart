@@ -15,3 +15,4 @@ ENV JAVA_OPTS=""
 
 RUN chmod +x /bin/bash
 RUN chmod +x /opt/script
+RUN chmod 777 /opt/chart

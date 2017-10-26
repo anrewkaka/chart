@@ -1,0 +1,20 @@
+version: "1"
+services:
+  chart:
+    image: lanntxyz/chart-server-docker:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./application.yml:/app/application.yml
+      - ./build/libs/chart-0.0.1-SNAPSHOT.jar:/app/chart.jar
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+  redis:
+    image: redis:latest
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

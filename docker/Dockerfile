@@ -15,4 +15,4 @@ USER daemon
 # setting entrypoint
 # ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /opt/chart/app.jar
 
-CM sudo chown -R daemon /bin/bash
+CMD sudo chown -R daemon /bin/bash

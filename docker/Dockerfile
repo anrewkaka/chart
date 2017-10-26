@@ -5,7 +5,7 @@ EXPOSE 80 443
 VOLUME ["/opt/chart", "/opt/script"]
 
 # add jar to docker
-# ADD build/libs/chart-0.0.1-SNAPSHOT.jar /opt/chart/app.jar
+ADD ./script /opt/script
 
 # set environment variable
 ENV JAVA_OPTS=""

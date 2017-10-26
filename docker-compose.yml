@@ -5,7 +5,7 @@ services:
     ports:
       - 80:8080
     networks:
-      - bridge
+      - webnet
     deploy:
       restart_policy:
         condition: on-failure

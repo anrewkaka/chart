@@ -10,9 +10,7 @@ services:
       restart_policy:
         condition: on-failure
     volumes:
-      - ./:/app
-    depends_on:
-      - redis
+      - app_data:/app
     environment:
       - REDIS_HOST=redis
     command: script/start.sh
@@ -22,6 +20,7 @@ services:
       - redis_data:/data
 
 volumes:
+  app_data:
   redis_data:
 networks:
   webnet:

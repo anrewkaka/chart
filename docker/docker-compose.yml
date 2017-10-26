@@ -9,7 +9,7 @@ services:
     volumes:
       - ../build/libs:/opt/chart
       - ../../config:/opt/chart/src/main/resources
-    entrypoint: java -jar /opt/chart/chart-0.0.1-SNAPSHOT.jar
+    entrypoint: java -jar -Dspring.config.location=/opt/chart/resources/application.yml /opt/chart/chart-0.0.1-SNAPSHOT.jar
   redis:
      image: redis:latest
      volumes:

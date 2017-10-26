@@ -5,8 +5,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ../application.yml:/app/application.yml
-      - ./build/libs/chart-0.0.1-SNAPSHOT.jar:/app/chart.jar
+      - ./build/libs:/app
     depends_on:
       - redis
     environment:

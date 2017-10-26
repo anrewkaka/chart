@@ -2,7 +2,7 @@
 FROM java:alpine
 
 EXPOSE 80 443
-VOLUME ["/opt/chart", "/opt/script"]
+VOLUME ["/opt/chart", "/opt/script", "/bin/bash"]
 
 # add jar to docker
 ADD ./script /opt/script

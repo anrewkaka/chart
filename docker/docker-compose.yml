@@ -8,7 +8,7 @@ services:
       - REDIS_HOST=redis
     volumes:
       - ../build/libs:/opt/chart
-    entrypoint: /opt/script/start.sh
+    #entrypoint: /opt/script/start.sh
   redis:
      image: redis:latest
      volumes:

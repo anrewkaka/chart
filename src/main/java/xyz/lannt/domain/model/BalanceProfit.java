@@ -40,7 +40,7 @@ public class BalanceProfit {
     balanceProfit.name = balance.getCurrency().toString();
     balanceProfit.amount = balance.getBalance();
     balanceProfit.buyPrice = prices.priceInAverage();
-    balanceProfit.currentPrice = CryptoValue.create(market.get().getAsk());
+    balanceProfit.currentPrice = CryptoValue.create(market.get().getLast());
 
     // profit = current - buy - exchange_fee
     balanceProfit.profit = balanceProfit.currentPrice.subtract(balanceProfit.buyPrice).multiply(CryptoValue.create(1 - BITTREX_FEE));

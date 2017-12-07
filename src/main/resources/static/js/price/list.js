@@ -1,7 +1,7 @@
 var stompClient = null;
 
 function connect() {
-    var socket = new SockJS('chart-websocket');
+    var socket = new SockJS('/chart-websocket');
     stompClient = Stomp.over(socket);
     stompClient.debug = null;
     stompClient.connect({}, function(frame) {

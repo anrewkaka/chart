@@ -86,7 +86,7 @@ function sell() {
   var price = $("#myModal").find("#model-body").find(".price").text();
   var quantity = $("#myModal").find("#model-body").find("#quantity").val();
   alertSelling(name, price);
-  stompClient.send("/app/sell", {}, JSON.stringify({ "exchange": $("#exchange").val(), "currency": name, "rate": price, "quantity": quantity, "baseCurrency": "BTC" }));
+  stompClient.send("/app/sell", {}, JSON.stringify({ "exchange": $("#exchange").val(), "currency": name, "rate": price - 0.00000001, "quantity": quantity, "baseCurrency": "BTC" }));
 }
 
 function alertSelling(name, price) {

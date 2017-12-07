@@ -8,7 +8,7 @@ services:
       - REDIS_HOST=redis
     volumes:
       - ../build/libs:/opt/chart
-      - ../../config:/opt/chart/resources
+      - /opt/chart/conf:/opt/chart/resources
     entrypoint: java -jar -Dspring.config.location=/opt/chart/resources/application.yml /opt/chart/chart-0.0.1-SNAPSHOT.jar
   redis:
      image: redis:latest

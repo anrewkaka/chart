@@ -1,8 +1,6 @@
-# SERVER
-server:
-  port: 9090
-# DB
 spring:
+  application:
+    name: user-api
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sys?useSSL=false
@@ -12,6 +10,10 @@ spring:
     host: redis
   thymeleaf:
     cache: false
+
+# SERVER
+server:
+  port: 9090
 
 # DOMA
 doma:

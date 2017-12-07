@@ -1,11 +1,11 @@
 var stompClient = null;
 
 function connect() {
-    var socket = new SockJS('/chart-websocket');
+    var socket = new SockJS('chart-websocket');
     stompClient = Stomp.over(socket);
     stompClient.debug = null;
     stompClient.connect({}, function(frame) {
-        stompClient.subscribe('/topic/price', function(account) {
+        stompClient.subscribe('topic/price', function(account) {
             showPrices(JSON.parse(account.body).body);
         });
     });
@@ -77,7 +77,7 @@ $(function() {
 });
 
 function send() {
-    stompClient.send("/app/get-list", {}, $("#exchange").val());
+    stompClient.send("app/get-list", {}, $("#exchange").val());
 }
 
 function showPriceBox(exchange, currency) {
@@ -88,11 +88,11 @@ function showPriceBox(exchange, currency) {
 }
 
 function addPrice(exchange, currency, price) {
-    stompClient.send("/app/price-registration", {}, JSON.stringify({ "exchange":exchange, "currency":currency, "price":price }));
+    stompClient.send("app/price-registration", {}, JSON.stringify({ "exchange":exchange, "currency":currency, "price":price }));
 }
 
 function deletePrice(exchange, currency) {
-    stompClient.send("/app/price-delete", {}, JSON.stringify({ "exchange":exchange, "currency":currency }));
+    stompClient.send("app/price-delete", {}, JSON.stringify({ "exchange":exchange, "currency":currency }));
 }
 
 function displayCurrencyBox() {

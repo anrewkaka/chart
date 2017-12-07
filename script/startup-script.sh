@@ -7,8 +7,8 @@ if [ ! -d "~/market-client-autoconfig" ]; then
   git clone https://github.com/anrewkaka/market-client-autoconfig.git -b 'develop' ~/market-client-autoconfig
 fi
 
-if [ ! -d "~/prices-collector" ]; then
-  git clone https://github.com/anrewkaka/prices-collector.git -b 'develop' ~/chart
+if [ ! -d "~/chart" ]; then
+  git clone https://github.com/anrewkaka/chart.git -b 'develop' ~/chart
 fi
 
 # publish market-client library

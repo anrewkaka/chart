@@ -13,6 +13,7 @@ spring:
 
 # SERVER
 server:
+  context-path: /chart
   port: 9090
 
 # DOMA

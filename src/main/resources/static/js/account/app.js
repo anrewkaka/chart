@@ -1,14 +1,14 @@
 var stompClient = null;
 
 function connect() {
-  var socket = new SockJS('/chart-websocket');
+  var socket = new SockJS('chart-websocket');
   stompClient = Stomp.over(socket);
   stompClient.debug = null;
   stompClient.connect({}, function(frame) {
-    stompClient.subscribe('/topic/account_profit', function(account) {
+    stompClient.subscribe('topic/account_profit', function(account) {
       showAccount(JSON.parse(account.body).body);
     });
-    stompClient.subscribe('/topic/sell', function(account) {
+    stompClient.subscribe('topic/sell', function(account) {
       showStatus(JSON.parse(account.body));
     });
   });
@@ -53,7 +53,7 @@ $(function() {
 });
 
 function send() {
-  stompClient.send("/app/account_profit", {}, JSON.stringify({ "exchange": $("#exchange").val(), "baseCurrency": "BTC" }));
+  stompClient.send("app/account_profit", {}, JSON.stringify({ "exchange": $("#exchange").val(), "baseCurrency": "BTC" }));
 }
 
 function getCssClass(profitInPercentage) {
@@ -86,7 +86,7 @@ function sell() {
   var price = $("#myModal").find("#model-body").find(".price").text();
   var quantity = $("#myModal").find("#model-body").find("#quantity").val();
   alertSelling(name, price);
-  stompClient.send("/app/sell", {}, JSON.stringify({ "exchange": $("#exchange").val(), "currency": name, "rate": price - 0.00000001, "quantity": quantity, "baseCurrency": "BTC" }));
+  stompClient.send("app/sell", {}, JSON.stringify({ "exchange": $("#exchange").val(), "currency": name, "rate": price - 0.00000001, "quantity": quantity, "baseCurrency": "BTC" }));
 }
 
 function alertSelling(name, price) {

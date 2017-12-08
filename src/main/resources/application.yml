@@ -27,3 +27,10 @@ bittrex:
   apiKey: 16dd768cc7584c73b0e54c4c7b7eca94
   secret: f4a4b8c6498240ba8966cb11e7dab9c8
   devMode: false
+
+# LOGGIN
+debug: true
+logging:
+  enabled: true
+  path: /var/log/chart
+  pattern: "time:%{yyyy-MM-dd HH:mm:ss.mmm}t\tthread:%I\tmethod:%m\tstatus:%s\trestime:%D\turi:%U\tparam:%q\tip:%h"

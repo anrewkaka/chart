@@ -35,9 +35,10 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
-echo $GCS_DELETE_FOLDERS
+for GCS_DELETE_FOLDER GCS_DELETE_FOLDERS do
+    echo `basename ${GCS_DELETE_FOLDER}` '\r' > ${GCS_DELETE_LOG}
+done
 
-echo $GCS_DELETE_FOLDERS > ${GCS_DELETE_LOG}
 
 # GCSへコピー処理結果ログをコピー
 gsutil cp ${GCS_DELETE_LOG} gs://${DATA_BUCKET}/log/

@@ -40,7 +40,15 @@ for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     GCS_FOLDER_CREATED_DATE=${GCS_DELETE_FOLDER_NAME%%_*}
     
     if [ $(expr ${GCS_FOLDER_CREATED_DATE} \<= ${TARGET_DATE}) -eq 1 ]; then
-      echo ${GCS_DELETE_FOLDER}
+        # 削除実行
+        gsutil rm -rf ${GCS_DELETE_FOLDER}
+        RETURN_CD=${?}
+        if [ ${RETURN_CD} != 0 ]; then
+            # 異常終了
+            exit -1
+        fi
+
+        echo ${GCS_DELETE_FOLDER} >> ${GCS_DELETE_LOG}
     fi
 done
 

@@ -28,7 +28,7 @@ GCS_DELETE_LOG=${LOCAL_BASEDIR}/log/GCS_DELETE_${TARGET_LOAD_GROUPID}_`date +%Y%
 touch ${GCS_DELETE_LOG}
 
 # 削除対象リストを取得
-GCS_DELETE_FOLDERS=`gsutil ls gs://${DATA_BUCKET}/delete_folder`
+GCS_DELETE_FOLDERS=`gsutil ls gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
     # 異常終了

@@ -28,14 +28,15 @@ GCS_DELETE_LOG=${LOCAL_BASEDIR}/log/GCS_DELETE_${TARGET_LOAD_GROUPID}_`date +%Y%
 touch ${GCS_DELETE_LOG}
 
 # 削除対象リストを取得
-# GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`
+GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
     # 異常終了
     exit -1
 fi
 
-for GCS_DELETE_FOLDER in `gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`; do
+# for GCS_DELETE_FOLDER in `gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`; do
+for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     echo `basename ${GCS_DELETE_FOLDER}` '\r' > ${GCS_DELETE_LOG}
 done
 

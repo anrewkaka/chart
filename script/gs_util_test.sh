@@ -41,7 +41,7 @@ for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     echo ${GCS_FOLDER_CREATED_DATE}
     echo ${TARGET_DATE}
     
-    if [ GCS_FOLDER_CREATED_DATE <= TARGET_DATE ]; then
+    if [ ! GCS_FOLDER_CREATED_DATE > TARGET_DATE ]; then
       echo ${GCS_DELETE_FOLDER}
     fi
 done

@@ -35,7 +35,7 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
-for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS} do
+for GCS_DELETE_FOLDER in GCS_DELETE_FOLDERS do
     echo `basename ${GCS_DELETE_FOLDER}` '\r' > ${GCS_DELETE_LOG}
 done
 

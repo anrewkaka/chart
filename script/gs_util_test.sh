@@ -39,7 +39,7 @@ for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     GCS_DELETE_FOLDER_NAME=`basename ${GCS_DELETE_FOLDER}`
     GCS_FOLDER_CREATED_DATE=${GCS_DELETE_FOLDER_NAME%%_*}
     
-    if [ GCS_FOLDER_CREATED_DATE \<= TARGET_DATE ]; then
+    if [ $(expr ${GCS_FOLDER_CREATED_DATE} \<= ${TARGET_DATE}) -eq 1 ]; then
       echo ${GCS_DELETE_FOLDER}
     fi
 done

@@ -37,6 +37,8 @@ fi
 
 echo $GCS_DELETE_FOLDERS
 
+echo $GCS_DELETE_FOLDERS > ${GCS_DELETE_LOG}
+
 # GCSへコピー処理結果ログをコピー
 gsutil cp ${GCS_DELETE_LOG} gs://${DATA_BUCKET}/log/
 RETURN_CD=${?}

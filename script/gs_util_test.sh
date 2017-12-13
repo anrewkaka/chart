@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 引数チェック
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
     echo "引数が不正です。引数の個数：$#" 2>&2
     # 異常終了
     exit -1

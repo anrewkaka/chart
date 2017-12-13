@@ -37,7 +37,7 @@ fi
 
 # for GCS_DELETE_FOLDER in `gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`; do
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
-    echo `basename ${GCS_DELETE_FOLDER}` '\r' > ${GCS_DELETE_LOG}
+    echo `basename ${GCS_DELETE_FOLDER}` '\r' >> ${GCS_DELETE_LOG}
 done
 
 

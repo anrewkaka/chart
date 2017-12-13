@@ -36,9 +36,7 @@ if [ ${RETURN_CD} -ne 0 ]; then
 fi
 
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
-    GCS_FOLDER_NAME=`basename ${GCS_DELETE_FOLDER}`
-    echo ${GCS_FOLDER_NAME}
-    export GCS_FOLDER_CREATED_DATE=`cut -d'_' -f1 <<<${GCS_FOLDER_NAME}`
+    GCS_FOLDER_CREATED_DATE=`cut -d'_' -f1 <<<basename ${GCS_DELETE_FOLDER}`
     echo ${GCS_FOLDER_CREATED_DATE}
 done
 

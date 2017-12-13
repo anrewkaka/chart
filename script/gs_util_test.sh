@@ -38,7 +38,7 @@ fi
 echo $GCS_DELETE_FOLDERS
 
 # GCSへコピー処理結果ログをコピー
-gsutil cp ${GCS_SEND_LOG} gs://${DATA_BUCKET}/log/
+gsutil cp ${GCS_DELETE_LOG} gs://${DATA_BUCKET}/log/
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
     # 異常終了
@@ -46,7 +46,7 @@ if [ ${RETURN_CD} -ne 0 ]; then
 fi
 
 # オンプレミスサーバのコピー処理結果ログを削除
-rm ${GCS_SEND_LOG}
+rm ${GCS_DELETE_LOG}
 
 # 正常終了
 exit 0

@@ -38,8 +38,8 @@ fi
 # for GCS_DELETE_FOLDER in `gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`; do
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     GCS_FOLDER_NAME=`basename ${GCS_DELETE_FOLDER}`
-    IFS=';' read -r GCS_FOLDER_CREATED_DATE <<< ${GCS_FOLDER_NAME}
     echo ${GCS_FOLDER_CREATED_DATE}
+    IFS=';' read -r GCS_FOLDER_CREATED_DATE <<< ${GCS_FOLDER_NAME}
     echo ${GCS_FOLDER_NAME}
 done
 

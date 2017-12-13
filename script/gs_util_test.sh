@@ -35,6 +35,8 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
+IFS='_'
+
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     set -- `basename ${GCS_DELETE_FOLDER}`
     GCS_FOLDER_CREATED_DATE=$1

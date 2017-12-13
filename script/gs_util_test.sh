@@ -23,11 +23,11 @@ gcloud auth activate-service-account ${SERVICE_ACCOUNT} \
 # プロジェクト設定
 gcloud config set project ${PROJECT_NAME}
 
-# コピー処理結果ログファイル作成
+# コピー処理結果ログファイルを作成
 GCS_DELETE_LOG=${LOCAL_BASEDIR}/log/GCS_DELETE_${TARGET_LOAD_GROUPID}_`date +%Y%m%d%H%M%S`.log
 touch ${GCS_DELETE_LOG}
 
-# 削除対象リストを取得
+# フォルダリストを取得
 GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
@@ -35,12 +35,15 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
+# 削除対象リストを抽出して、削除対象フォルダを削除
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
+    # フォルダ名を取得
     GCS_DELETE_FOLDER_NAME=`basename ${GCS_DELETE_FOLDER}`
     GCS_FOLDER_CREATED_DATE=${GCS_DELETE_FOLDER_NAME%%_*}
-    
+
+    # 削除対象リストを絞り込む
     if [ $(expr ${GCS_FOLDER_CREATED_DATE} \<= ${TARGET_DATE}) -eq 1 ]; then
-        # 削除実行
+        # フォルダ削除を実行
         gsutil rm -rf ${GCS_DELETE_FOLDER}
         RETURN_CD=${?}
         if [ ${RETURN_CD} != 0 ]; then
@@ -48,6 +51,7 @@ for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
             exit -1
         fi
 
+        # ログ出力
         echo ${GCS_DELETE_FOLDER} >> ${GCS_DELETE_LOG}
     fi
 done

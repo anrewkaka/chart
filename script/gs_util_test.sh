@@ -36,13 +36,9 @@ if [ ${RETURN_CD} -ne 0 ]; then
 fi
 
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
-    IFS='_'
-
-    set -- `basename ${GCS_DELETE_FOLDER}`
-    GCS_FOLDER_CREATED_DATE=$1
+    GCS_DELETE_FOLDER_NAME=`basename ${GCS_DELETE_FOLDER}`
+    GCS_FOLDER_CREATED_DATE=${GCS_DELETE_FOLDER_NAME%%_*}
     echo ${GCS_FOLDER_CREATED_DATE}
-
-    unset IFS
 done
 
 

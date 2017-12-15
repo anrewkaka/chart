@@ -42,7 +42,7 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
-GCS_DELETE_FOLDERS=( "${GCS_INPUT_FOLDERS[@]}" "${GCS_OUTPUT_FOLDERS[@]}" )
+GCS_DELETE_FOLDERS=${GCS_INPUT_FOLDERS[@]} ${GCS_OUTPUT_FOLDERS[@]}
 
 # 削除対象リストを抽出して、削除対象フォルダを削除
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do

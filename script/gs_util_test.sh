@@ -44,6 +44,8 @@ fi
 
 GCS_DELETE_FOLDERS=$( ${GCS_INPUT_FOLDERS[@]} ${GCS_OUTPUT_FOLDERS[@]} )
 
+echo ${GCS_DELETE_FOLDERS}
+
 # 削除対象リストを抽出して、削除対象フォルダを削除
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     # フォルダ名を取得

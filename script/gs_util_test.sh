@@ -28,7 +28,14 @@ GCS_DELETE_LOG=${LOCAL_BASEDIR}/log/GCS_DELETE_${TARGET_LOAD_GROUPID}_`date +%Y%
 touch ${GCS_DELETE_LOG}
 
 # フォルダリストを取得
-GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/delete_folder/*${TARGET_LOAD_GROUPID}`
+GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/input`
+RETURN_CD=${?}
+if [ ${RETURN_CD} -ne 0 ]; then
+    # 異常終了
+    exit -1
+fi
+
+GCS_DELETE_FOLDERS+=`gsutil ls -d gs://${DATA_BUCKET}/output`
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
     # 異常終了

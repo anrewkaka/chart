@@ -52,36 +52,37 @@ gcloud config set project ${PROJECT_NAME}
 # ディレクトリリストを削除
 #
 delete_by_path() {
-    GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/${$1}/*`
+    GCS_TARGET_DIRECTORY=$1
+    GCS_DELETE_DIRECTORIES=`gsutil ls -d gs://${DATA_BUCKET}/${GCS_TARGET_DIRECTORY}/*`
     if [ ${RETURN_CD} -ne 0 ]; then
         # 異常終了
         exit 1
     fi
 
     # DEBUG
-    echo ${GCS_DELETE_FOLDERS}
+    echo ${GCS_DELETE_DIRECTORIES}
     
-    for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
+    for GCS_DELETE_DIRECTORY in ${GCS_DELETE_DIRECTORIES}; do
         # フォルダ名を取得
-        GCS_DELETE_FOLDER_NAME=`basename ${GCS_DELETE_FOLDER}`
-        GCS_FOLDER_CREATED_DATE=${GCS_DELETE_FOLDER_NAME%%_*}
+        GCS_DELETE_DIRECTORY_NAME=`basename ${GCS_DELETE_DIRECTORY}`
+        GCS_DIRECTORY_CREATED_DATE=${GCS_DELETE_DIRECTORY_NAME%%_*}
 
         # 削除対象リストを絞り込む
-        if [ $(expr ${GCS_FOLDER_CREATED_DATE} \<= ${TARGET_DATE}) -eq 1 ]; then
+        if [ $(expr ${GCS_DIRECTORY_CREATED_DATE} \<= ${TARGET_DATE}) -eq 1 ]; then
             # フォルダ削除を実行
-            gsutil rm -rf ${GCS_DELETE_FOLDER}
+            gsutil rm -rf ${GCS_DELETE_DIRECTORY}
             RETURN_CD=${?}
             if [ ${RETURN_CD} != 0 ]; then
                 # ログ出力
-                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_FOLDER}
-                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_FOLDER} >> ${GCS_SEND_LOG}
+                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_DIRECTORY}
+                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_DIRECTORY} >> ${GCS_SEND_LOG}
                 # 異常終了
                 exit 1
             fi
 
             # ログ出力
-            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_FOLDER}
-            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_FOLDER} >> ${GCS_SEND_LOG}
+            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_DIRECTORY}
+            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_DIRECTORY} >> ${GCS_SEND_LOG}
         fi
     done
 }

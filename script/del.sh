@@ -60,8 +60,6 @@ delete_by_path() {
         exit 1
     fi
 
-unset GCS_DELETE_DIRECTORIES[0]
-
 echo $(expr ${GCS_DELETE_DIRECTORIES} \== ${GCS_TARGET_PATH})
 
 exit 0

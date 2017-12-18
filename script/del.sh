@@ -52,7 +52,7 @@ gcloud config set project ${PROJECT_NAME}
 # ディレクトリリストを削除
 #
 delete_by_path() {
-    declare -a GCS_DELETE_FOLDERS=("${!1}")
+    GCS_DELETE_FOLDERS=${!1}
     echo ${GCS_DELETE_FOLDERS[@]}
     
     # DEBUG

@@ -52,10 +52,7 @@ gcloud config set project ${PROJECT_NAME}
 # ディレクトリリストを削除
 #
 delete_by_path() {
-    GCS_DELETE_FOLDERS=$1
-    
-    echo ${GCS_DELETE_FOLDERS}
-    
+    GCS_DELETE_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/${$1}/*`
     if [ ${RETURN_CD} -ne 0 ]; then
         # 異常終了
         exit 1
@@ -90,12 +87,10 @@ delete_by_path() {
 }
 
 # 【input】のディレクトリを削除
-delete_by_path "gs://${DATA_BUCKET}/input/*"
+delete_by_path "input"
 
-#
-# 【output】のディレクトリリストを取得
-#
-delete_by_path "gs://${DATA_BUCKET}/output/*"
+# 【output】のディレクトリを削除
+delete_by_path "output"
 
 # 正常終了
 exit 0

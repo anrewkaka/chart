@@ -65,12 +65,14 @@ delete_by_path() {
             RETURN_CD=${?}
             if [ ${RETURN_CD} != 0 ]; then
                 # ログ出力
+                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_FOLDER}
                 echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_FOLDER} >> ${GCS_SEND_LOG}
                 # 異常終了
                 exit 1
             fi
 
             # ログ出力
+            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_FOLDER}
             echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_FOLDER} >> ${GCS_SEND_LOG}
         fi
     done

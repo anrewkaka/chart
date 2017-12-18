@@ -59,8 +59,8 @@ delete_by_path() {
         # 異常終了
         exit 1
     fi
-echo "$GCS_DELETE_DIRECTORIES[@]" "$GCS_TARGET_PATH"
-    if [ "$GCS_DELETE_DIRECTORIES[@]" = "$GCS_TARGET_PATH" ]; then
+
+    if [ "$GCS_DELETE_DIRECTORIES" = "$GCS_TARGET_PATH" ]; then
         # ログ出力
         echo "`date '+%T'` 空のディレクトリ: " ${GCS_TARGET_PATH} | tee -a ${GCS_SEND_LOG}
         # 正常終了

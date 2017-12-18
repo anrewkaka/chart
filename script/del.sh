@@ -15,7 +15,7 @@ TARGET_DATE=`date --date="${MCNT} months ago" +%Y%m%d`
 #
 # 環境設定ファイル
 #
-. $(cd $(dirname $0); pwd)/gcp_mail.env
+. $(cd $(dirname $0); pwd)/gcp_dwh.env
 
 #
 # 現在日時

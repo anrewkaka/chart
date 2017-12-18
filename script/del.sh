@@ -55,11 +55,13 @@ delete_by_path() {
     GCS_TARGET_DIRECTORY=$1
     GCS_TARGET_PATH=`echo gs://${DATA_BUCKET}/${GCS_TARGET_DIRECTORY}`
     GCS_DELETE_DIRECTORIES=`gsutil ls ${GCS_TARGET_PATH}/**`
-    GCS_DELETE_DIRECTORIES=${GCS_DELETE_DIRECTORIES[@]:1}
     if [ ${RETURN_CD} -ne 0 ]; then
         # 異常終了
         exit 1
     fi
+
+unset GCS_DELETE_DIRECTORIES[0]
+
 echo ${GCS_DELETE_DIRECTORIES}
 echo ${#GCS_DELETE_DIRECTORIES}
 exit 0

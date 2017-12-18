@@ -54,7 +54,7 @@ gcloud config set project ${PROJECT_NAME}
 delete_by_path() {
     local GCS_DELETE_FOLDERS=$1
     
-    echo ${GCS_DELETE_FOLDERS}
+    echo $1
 
     # DEBUG
     # echo ${GCS_DELETE_FOLDERS[@]}

@@ -53,12 +53,18 @@ gcloud config set project ${PROJECT_NAME}
 #
 delete_by_path() {
     GCS_TARGET_DIRECTORY=$1
-    GCS_DELETE_DIRECTORIES=`gsutil ls -d gs://${DATA_BUCKET}/${GCS_TARGET_DIRECTORY}/*`
+    GCS_TARGET_PATH=`echo gs://${DATA_BUCKET}/${GCS_TARGET_DIRECTORY}`
+    GCS_DELETE_DIRECTORIES=`gsutil ls -d ${GCS_TARGET_PATH}/*`
     if [ ${RETURN_CD} -ne 0 ]; then
         # 異常終了
         exit 1
     fi
-    
+
+    if [ ${#GCS_DELETE_DIRECTORIES[@]} -eq 0 ]; then
+        # ログ出力
+        echo "`date '+%T'` 空のディレクトリ：" ${GCS_TARGET_PATH} >> ${GCS_SEND_LOG}
+    fi
+
     for GCS_DELETE_DIRECTORY in ${GCS_DELETE_DIRECTORIES}; do
         # フォルダ名を取得
         GCS_DELETE_DIRECTORY_NAME=`basename ${GCS_DELETE_DIRECTORY}`

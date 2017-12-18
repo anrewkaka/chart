@@ -53,6 +53,9 @@ gcloud config set project ${PROJECT_NAME}
 #
 delete_by_path() {
     GCS_DELETE_FOLDERS=$1
+    
+    echo ${GCS_DELETE_FOLDERS}
+    
     if [ ${RETURN_CD} -ne 0 ]; then
         # 異常終了
         exit 1

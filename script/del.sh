@@ -105,3 +105,6 @@ fi
 
 # 【output】のディレクトリを削除
 delete_by_path ${GCS_OUTPUT_FOLDERS[@]}
+
+# 正常終了
+exit 0

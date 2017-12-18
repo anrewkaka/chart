@@ -92,7 +92,7 @@ if [ ${RETURN_CD} -ne 0 ]; then
 fi
 
 # 【input】のディレクトリを削除
-delete_by_path ${GCS_INPUT_FOLDERS[@]}
+`delete_by_path ${GCS_INPUT_FOLDERS[@]}`
 
 #
 # 【output】のディレクトリリストを取得
@@ -104,7 +104,7 @@ if [ ${RETURN_CD} -ne 0 ]; then
 fi
 
 # 【output】のディレクトリを削除
-delete_by_path ${GCS_OUTPUT_FOLDERS[@]}
+`delete_by_path ${GCS_OUTPUT_FOLDERS[@]}`
 
 # 正常終了
 exit 0

@@ -51,7 +51,7 @@ gcloud config set project ${PROJECT_NAME}
 #
 # ディレクトリリストを削除
 #
-function delete_by_path() {
+function delete_by_path {
     GCS_DELETE_FOLDERS=$1
     for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
         # フォルダ名を取得

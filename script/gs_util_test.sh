@@ -35,6 +35,8 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
+echo 'INPUT: ' ${GCS_INPUT_FOLDERS}
+
 GCS_OUTPUT_FOLDERS=`gsutil ls -d gs://${DATA_BUCKET}/output`
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
@@ -42,7 +44,9 @@ if [ ${RETURN_CD} -ne 0 ]; then
     exit -1
 fi
 
-GCS_DELETE_FOLDERS=`(${GCS_INPUT_FOLDERS[@]}, ${GCS_OUTPUT_FOLDERS[@]})`
+echo 'OUTPUT: ' ${GCS_OUTPUT_FOLDERS}
+
+GCS_DELETE_FOLDERS=(${GCS_INPUT_FOLDERS[@]}, ${GCS_OUTPUT_FOLDERS[@]})
 
 for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
     echo ${GCS_DELETE_FOLDER}

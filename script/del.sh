@@ -60,7 +60,7 @@ delete_by_path() {
         exit 1
     fi
 
-    if [ "${GCS_DELETE_DIRECTORIES}" -eq "${GCS_TARGET_PATH}" ]; then
+    if [ $(expr ${GCS_DIRECTORY_CREATED_DATE} \= ${TARGET_DATE}) -eq 1 ]; then
         # ログ出力
         echo "`date '+%T'` 空のディレクトリ: " ${GCS_TARGET_PATH} | tee -a ${GCS_SEND_LOG}
         # 正常終了

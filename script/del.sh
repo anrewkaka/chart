@@ -59,7 +59,7 @@ delete_by_path() {
     fi
 
     # DEBUG
-    # echo ${GCS_DELETE_FOLDERS[@]}
+    echo ${GCS_DELETE_FOLDERS[@]}
     
     for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
         # フォルダ名を取得

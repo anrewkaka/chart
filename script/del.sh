@@ -62,7 +62,7 @@ delete_by_path() {
 
     if [ "${GCS_DELETE_DIRECTORIES}" "=" "${GCS_TARGET_PATH}" ]; then
         # ログ出力
-        "`date '+%T'` 空のディレクトリ: ${GCS_TARGET_PATH}" | tee -a ${GCS_SEND_LOG}
+        "`date '+%T'` 空のディレクトリ: " ${GCS_TARGET_PATH} | tee -a ${GCS_SEND_LOG}
         # 正常終了
         exit 0
     fi
@@ -79,13 +79,13 @@ delete_by_path() {
             RETURN_CD=${?}
             if [ ${RETURN_CD} != 0 ]; then
                 # ログ出力
-                echo "`date '+%T'` ディレクトリ削除失敗: ${GCS_DELETE_DIRECTORY}" | tee -a ${GCS_SEND_LOG}
+                echo "`date '+%T'` ディレクトリ削除失敗: " ${GCS_DELETE_DIRECTORY} | tee -a ${GCS_SEND_LOG}
                 # 異常終了
                 exit 1
             fi
 
             # ログ出力
-            echo "`date '+%T'` ディレクトリ削除成功: ${GCS_DELETE_DIRECTORY}" | tee -a ${GCS_SEND_LOG}
+            echo "`date '+%T'` ディレクトリ削除成功: " ${GCS_DELETE_DIRECTORY} | tee -a ${GCS_SEND_LOG}
         fi
     done
 }

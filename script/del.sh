@@ -59,7 +59,7 @@ delete_by_path() {
         # 異常終了
         exit 1
     fi
-
+echo ${#GCS_DELETE_DIRECTORIES[@]}
     if [ ${#GCS_DELETE_DIRECTORIES[@]} -eq 0 ]; then
         # ログ出力
         "`date '+%T'` 空のディレクトリ：" ${GCS_TARGET_PATH} | tee -a ${GCS_SEND_LOG}

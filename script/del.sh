@@ -1,4 +1,4 @@
-#!/bin/sh
+# !/bin/sh
 
 #
 # 引数設定
@@ -57,7 +57,7 @@ delete_by_path() {
     echo ${GCS_DELETE_FOLDERS}
 
     # DEBUG
-    echo ${GCS_DELETE_FOLDERS[@]}
+    # echo ${GCS_DELETE_FOLDERS[@]}
     
     for GCS_DELETE_FOLDER in ${GCS_DELETE_FOLDERS}; do
         # フォルダ名を取得

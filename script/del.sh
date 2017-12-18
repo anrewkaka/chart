@@ -58,9 +58,6 @@ delete_by_path() {
         # 異常終了
         exit 1
     fi
-
-    # DEBUG
-    echo ${GCS_DELETE_DIRECTORIES}
     
     for GCS_DELETE_DIRECTORY in ${GCS_DELETE_DIRECTORIES}; do
         # フォルダ名を取得
@@ -74,14 +71,12 @@ delete_by_path() {
             RETURN_CD=${?}
             if [ ${RETURN_CD} != 0 ]; then
                 # ログ出力
-                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_DIRECTORY}
                 echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_DIRECTORY} >> ${GCS_SEND_LOG}
                 # 異常終了
                 exit 1
             fi
 
             # ログ出力
-            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_DIRECTORY}
             echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_DIRECTORY} >> ${GCS_SEND_LOG}
         fi
     done

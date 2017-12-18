@@ -38,7 +38,7 @@ gcloud auth activate-service-account ${SERVICE_ACCOUNT} \
 RETURN_CD=${?}
 if [ ${RETURN_CD} -ne 0 ]; then
     # ログ出力
-    echo "`date '+%T'` GCSへの接続に失敗しました" >> ${GCS_SEND_LOG}
+    echo "`date '+%T'` GCSへの接続に失敗しました" | tee -a ${GCS_SEND_LOG}
     # 異常終了
     exit 1
 fi
@@ -78,13 +78,13 @@ echo "`date '+%T'` 空のディレクトリ：" ${GCS_TARGET_DIRECTORY} | tee -a
             RETURN_CD=${?}
             if [ ${RETURN_CD} != 0 ]; then
                 # ログ出力
-                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_DIRECTORY} >> ${GCS_SEND_LOG}
+                echo "`date '+%T'` ディレクトリ削除失敗：" ${GCS_DELETE_DIRECTORY} | tee -a ${GCS_SEND_LOG}
                 # 異常終了
                 exit 1
             fi
 
             # ログ出力
-            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_DIRECTORY} >> ${GCS_SEND_LOG}
+            echo "`date '+%T'` ディレクトリ削除成功：" ${GCS_DELETE_DIRECTORY} | tee -a ${GCS_SEND_LOG}
         fi
     done
 }

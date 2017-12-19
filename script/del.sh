@@ -70,8 +70,8 @@ delete_by_path() {
         GCS_DELETE_DIRECTORY_NAME=`basename ${GCS_DELETE_DIRECTORY}`
         GCS_DIRECTORY_CREATED_DATE=${GCS_DELETE_DIRECTORY_NAME%%_*}
 
-        if [ $(expr "$GCS_DIRECTORY_CREATED_DATE" : '^[0-9]\{8\}$') = 0 ]; then
-            echo ${GCS_DELETE_DIRECTORY}
+        if [ $(expr "$GCS_DIRECTORY_CREATED_DATE" : '^[0-9]\{8\}$') -eq 0 ]; then
+            echo ${GCS_DIRECTORY_CREATED_DATE}
             continue
         fi
 

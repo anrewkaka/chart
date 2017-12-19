@@ -71,7 +71,7 @@ delete_by_path() {
         GCS_DIRECTORY_CREATED_DATE=${GCS_DELETE_DIRECTORY_NAME%%_*}
 
         # if [ (echo "$GCS_DIRECTORY_CREATED_DATE" | grep -Eq ^[0-9]{8}$) ]; then
-        if [ $(expr ${GCS_DIRECTORY_CREATED_DATE} : ^[0-9]{8}$) -eq 1 ]; then
+        if [ $(expr ${GCS_DIRECTORY_CREATED_DATE} : ^[0-9]{8}$) -ne 1 ]; then
             continue
         fi
 

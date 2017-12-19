@@ -68,7 +68,7 @@ delete_by_path() {
     for GCS_DELETE_DIRECTORY in ${GCS_DELETE_DIRECTORIES}; do
         # フォルダ名を取得
         GCS_DELETE_DIRECTORY_NAME=`basename ${GCS_DELETE_DIRECTORY}`
-        GCS_DIRECTORY_CREATED_DATE=${GCS_DELETE_DIRECTORY_NAME%%_*}
+        GCS_DIRECTORY_CREATED_DATE=${GCS_DELETE_DIRECTORY_NAME%%-*}
 
         if [ $(expr "$GCS_DIRECTORY_CREATED_DATE" : '^[0-9]\{8\}$') -eq 0 ]; then
             echo ${GCS_DIRECTORY_CREATED_DATE}

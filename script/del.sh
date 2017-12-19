@@ -70,7 +70,9 @@ delete_by_path() {
         GCS_DELETE_DIRECTORY_NAME=`basename ${GCS_DELETE_DIRECTORY}`
         GCS_DIRECTORY_CREATED_DATE=${GCS_DELETE_DIRECTORY_NAME%%_*}
 
-        [ "$GCS_DIRECTORY_CREATED_DATE" =~ ^[0-9]{8}$ ] && continue
+        if [[ "$GCS_DIRECTORY_CREATED_DATE" =~ ^[0-9]{8}$ ]]; then
+            continue
+        fi
 
         # 削除対象リストを絞り込む
         if [ $(expr ${GCS_DIRECTORY_CREATED_DATE} \<= ${TARGET_DATE}) -eq 1 ]; then

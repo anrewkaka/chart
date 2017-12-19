@@ -72,7 +72,7 @@ delete_by_path() {
 
         # if [ (echo "$GCS_DIRECTORY_CREATED_DATE" | grep -Eq ^[0-9]{8}$) ]; then
         if [ $(expr ${GCS_DIRECTORY_CREATED_DATE} : "^[0-9]{8}$") = 0 ]; then
-            echo `$(expr ${GCS_DIRECTORY_CREATED_DATE} : "^[0-9]{8}$")`
+            echo "`$(expr ${GCS_DIRECTORY_CREATED_DATE} : "^[0-9]{8}$")`"
             echo ${GCS_DELETE_DIRECTORY}
             continue
         fi

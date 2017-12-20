@@ -20,7 +20,7 @@ CURRENT_TIMESTAMP=`date +%Y%m%d%H%M%S`
 #
 # 環境設定ファイル
 #
-. $(cd $(dirname $0); pwd)/gcp_mail.env
+. $(cd $(dirname $0); pwd)/gcp_dwh.env
 
 #
 # ログ出力先ファイルパス

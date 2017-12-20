@@ -84,6 +84,7 @@ delete_by_path() {
             if [ ${RETURN_CD} != 0 ]; then
                 # ログ出力
                 echo "`date '+%T'` ディレクトリ削除失敗: " ${GCS_DELETION_DIRECTORY} | tee -a ${GCS_UNNECESSARY_DELETION_LOG}
+                continue
             fi
 
             # ログ出力

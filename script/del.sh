@@ -26,7 +26,7 @@ if [ "x$MCNT" = "x" ] ; then
 fi
 
 # 引数の値が2より小さい場合、処理を中止する
-if [ $(expr "$MCNT" : '^[0-9]$') -eq 0 ] && $MCNT -lt 2 ]; then
+if [ $(expr "$MCNT" : '^[0-9]$') -eq 0 ] || $MCNT -lt 2 ]; then
     # ログ出力
     echo "`date '+%T'` 不正な引数：${MCNT}（正しい値は2以上です。）" | tee -a ${GCS_UNNECESSARY_DELETION_LOG}
     # 異常終了

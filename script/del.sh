@@ -1,3 +1,21 @@
+#!/bin/sh
+
+#
+# 環境設定ファイル
+#
+. $(cd $(dirname $0); pwd)/gcp_dwh.env
+
+#
+# 現在日時
+#
+CURRENT_TIMESTAMP=`date +%Y%m%d%H%M%S`
+
+#
+# ログ出力先ファイルパス
+#
+GCS_UNNECESSARY_DELETION_LOG=${LOCAL_BASEDIR}/log/ETC_BAT_MAIL_GCS_DELETION_${CURRENT_TIMESTAMP}.log
+touch ${GCS_UNNECESSARY_DELETION_LOG}
+
 #
 # 引数設定
 #
@@ -7,26 +25,18 @@ if [ "x$MCNT" = "x" ] ; then
   MCNT=2
 fi
 
+# 引数の値が2より小さい場合、処理を中止する
+if [ MCNT -lt 2 ]; then
+    # ログ出力
+    echo "`date '+%T'` 不正な引数：${MCNT}（正しい値は2以上です。）" | tee -a ${GCS_UNNECESSARY_DELETION_LOG}
+    # 異常終了
+    exit 1
+fi
+
 #
 # 対象日設定(YYYYMMDD)
 #
 TARGET_DATE=`date --date="${MCNT} months ago" +%Y%m%d`
-
-#
-# 現在日時
-#
-CURRENT_TIMESTAMP=`date +%Y%m%d%H%M%S`
-
-#
-# 環境設定ファイル
-#
-. $(cd $(dirname $0); pwd)/gcp_dwh.env
-
-#
-# ログ出力先ファイルパス
-#
-GCS_UNNECESSARY_DELETION_LOG=${LOCAL_BASEDIR}/log/ETC_BAT_MAIL_GCS_DELETION_${CURRENT_TIMESTAMP}.log
-touch ${GCS_UNNECESSARY_DELETION_LOG}
 
 # GCPアカウント認証
 gcloud auth activate-service-account ${SERVICE_ACCOUNT} \

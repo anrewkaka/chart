@@ -62,7 +62,7 @@ delete_by_path() {
     GCS_TARGET_DIRECTORY=$1
     GCS_TARGET_PATH="gs://${DATA_BUCKET}/${GCS_TARGET_DIRECTORY}/"
     # ディレクトリパスリストを取得する
-    GCS_DELETION_DIRECTORIES=`gsutil ls ${GCS_TARGET_PATH}**`
+    GCS_DELETION_DIRECTORIES=`gsutil ls ${GCS_TARGET_PATH}`
     RETURN_CD=${?}
     if [ ${RETURN_CD} -ne 0 ]; then
         # ログ出力
